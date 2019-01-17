@@ -1,0 +1,11 @@
+= O-TIN-16-T-a
+
+ifdef::env-github[:outfilesuffix: .adoc]
+
+image:https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg["gitmoji", link="https://gitmoji.carloscuesta.me"]
+
+*Example code from lessons at the TEKO Schweizerische Fachschule, Olten.*
+
+== Courses
+
+- link:webengineering[Web Engineering I+II]
