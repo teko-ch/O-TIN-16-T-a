@@ -1,29 +1,28 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
-<style>
 
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>Beispiel 8</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+    <style>
+      p {
+        font-size: 1.2em;
+        font-family: 'Open Sans Condensed', sans-serif;
+      }
+      p.second > .second ~ a:visited {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
 
-  p {
-    font-size: 1.2em;
-    font-family: 'Open Sans Condensed', sans-serif;
-  }
+    <p class="second">The <span class="second">first</span> paragraph.</p>
+    <p class="second">The <span class="test"><span class="second">second</span> test class</span> paragraph.</p>
+    <p class="third">The third paragraph.</p>
+    <p class="fourth">The fourth paragraph.</p>
 
-  p.second > .second ~ a:visited {
-    color: blue;
-  }
+    <span class="second">Span with <span class="second">second</span></span>
 
-</style>
-</head>
-<body>
-
-<p class="second">The <span class="second">first</span> paragraph.</p>
-<p class="second">The <span class="test"><span class="second">second</span> test class<span> paragraph.</p>
-<p class="third">The third paragraph.</p>
-<p class="fourth">The fourth paragraph.</p>
-
-<span class="second">Span mit <span class="second">second</span></span>
-
-</body>
+  </body>
 </html>
