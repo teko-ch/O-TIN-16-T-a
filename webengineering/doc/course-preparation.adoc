@@ -42,6 +42,7 @@ Innerhalb von *Visual Studio Code* werden die folgenden Plugins über installier
 
 * Auto Close Tag
 * Auto Rename Tag
+* CSSTree Validator
 * EditorConfig for VS Code
 * Git History
 * GitHub
@@ -53,4 +54,5 @@ Innerhalb von *Visual Studio Code* werden die folgenden Plugins über installier
 * Prettier - Code formatter
 * REST Client
 * TODO Highlight
+* W3C Validation
 * XML Tools
