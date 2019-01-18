@@ -1,0 +1,205 @@
+== Einleitung
+
+=== Haftungsausschluss
+
+Das folgende Dokument wurde nur für ein aufgeschlossenes Publikum freigegeben. Überempfindlichkeit gegen gelegentliche Profanität erfordert das Schliessen von Augen und Ohren.
+
+Alle Logos, Fotos etc., die in diesem Dokument verwendet werden, sind Eigentum ihrer jeweiligen Urheberrechtsinhaber und werden hier nur für Bildungszwecke verwendet. Alle in diesem Dokument verwendeten Marken sind Marken der jeweiligen Eigentümer.
+
+Der Autor handelt nicht im Auftrag der CSS Versicherung. Die geäusserten Ansichten sind allein die des Verfassers.
+
+Marcus Fihlon lehnt jede Verantwortung für Verluste oder Schäden ab, die eine Person oder Organisation aufgrund der in diesem Dokument vorhandenen Informationen, Meinungen, Schlussfolgerungen oder Empfehlungen erleiden kann, auch bei Verlusten oder Schäden durch Fehler oder Fahrlässigkeit des Autors.
+
+=== Zeichen und Symbole
+
+TIP: Hilfreiche Tipps, die das Leben einfacher machen können.
+
+NOTE: Notizen mit zusätzlichen Informationen.
+
+WARNING: Warnungen vor Fehlern oder Fallstricken.
+
+IMPORTANT: Sehr wichtige Informationen! Unbedingt beachten!
+
+CAUTION: Achtung! Es könnten kleine Katzenbabies zu Schaden kommen!
+
+=== Über mich
+
+.Marcus Fihlon
+image::marcus.jpg[float=right]
+
+* *Agile Coach* +
+  CSS Versicherung
+
+* *Software Engineer* +
+  CSS Versicherung, Open Source Software
+
+* *Referent* +
+  Konferenzen, User Groups, Meetups
+
+* *Dozent* +
+  TEKO Schweizerische Fachschule
+
+* *Autor* +
+  Fachartikel, Fachbücher
+
+* *Community Leader* +
+  Hackergarten, Java User Group Switzerland, Kotlin Swiss User Group,
+Voxxed Days Zürich, BaselOne
+
+****
+https://www.fihlon.swiss/[www.fihlon.swiss] |
+https://github.com/McPringle[github.com/McPringle] |
+http://hackergarten.net/[hackergarten.net] |
+https://www.jug.ch/[jug.ch]
+****
+
+=== Über dich
+
+*Stelle dich vor*
+
+* Dein Name
+* Dein Job
+* Dein Arbeitgeber
+* Dein Vorwissen
+* Deine Erwartungen
+
+=== Über diesen Kurs
+
+* Keine Semesterarbeiten
+* Keine Hausarbeiten
+* Dafür eLearnings
+* Datengrab auf https://github.com/teko-ch/O-TIN-16-T-a[GitHub]
+** Arbeitsbuch
+** Übungen
+** Musterlösungen
+
+=== Gesunder Menschenverstand
+
+* Erscheine vorbereitet
+** Mit einem arbeitsfähigen Notebook
+** Verpasster Unterrichtsstoff nachgeholt
+* Gegenseitig helfen
+** Früher fertig: Kameraden helfen
+** Übungen dürfen mittels Pair Programming gelöst werden
+* Kommunikation
+** Feedback geben
+** Abwesenheiten ankündigen
+
+=== Kontakt
+
+* *Addresse* +
+  https://www.openstreetmap.org/node/4585331343[Winkelriedstrasse 25, 6003 Luzern, Switzerland]
+
+* *What3Words* +
+  https://map.what3words.com/revival.chicken.think[revival.chicken.think]
+
+* *Telefon, SMS, iMessage, Facetime* +
+  link:tel:+41793282496[+41 79 328 24 96]
+
+* *Skype* +
+  link:skype:marcusfihlon?call[marcusfihlon]
+
+* *Signal* +
+  link:https://signal.org/[+41 79 328 24 96]
+
+* *Telegram* +
+  link:https://t.me/SoftwareCraftsman[SoftwareCraftsman]
+
+* *Threema* +
+  link:threema://add?id=M36HU8SN[M36HU8SN]
+
+* *WhatsApp* +
+  link:threema://add?id=M36HU8SN[+41 79 328 24 96]
+
+* *Twitter* +
+  link:https://twitter.com/mcpringle[McPringle]
+
+* *E-Mail, Hangout* +
+  link:mailto:marcus@fihlon.swiss[marcus@fihlon.swiss]
+
+=== Literatur
+
+*Dieser Kurs basiert auf dem Buch https://www.rheinwerk-verlag.de/schrodinger-lernt-html5-css-und-javascript_4834/[Schrödinger lernt HTML5, CSS3 & JavaScript] vom Rheinwerk Verlag (ISBN https://www.rheinwerk-verlag.de/schrodinger-lernt-html5-css-und-javascript_4834/[978-3-8362-6825-7]), dritte Auflage.*
+
+Dieses Buch ist eine perfekte Ergänzung zu diesem Kurs und enthält mehr Erläuterungen und mehr Übungen in einer lockeren, leicht verständlichen Aufmachung. Das Buch ist für diesen Kurs nicht erforderlich, dennoch empfehle ich die Anschaffung sehr!
+
+=== Nützliche Links
+
+* https://www.w3.org[World Wide Web Consortium (W3C)] +
+  Internationale Arbeitsgemeinschaft zur Weiterentwicklung von Web-Standards.
+
+* https://validator.w3.org[W3C Markup Validator Service] +
+  Prüfung von Dokumenten auf Einhaltung von Web-Standards (HTML, XHTML, SMIL, MathML, etc).
+
+* http://jigsaw.w3.org/css-validator/[W3C CSS Validation Service] +
+  Prüfung von CSS Dateien und eingebettetem CSS auf Einhaltung von Web-Standards.
+
+* https://validator.w3.org/checklink[W3C Link Checker] +
+  Prüfung von Links und Referenzen auf Gültigkeit.
+
+* http://www.w3schools.com[W3Schools] +
+  Lernen, testen und trainieren mit vielen Beispielen und Übungen.
+
+* https://selfhtml.org[SelfHTML] +
+  Sehr gute Dokumentation inklusive Blog und Forum über HTML, CSS und JavaScript.
+
+=== Lernvideo "Internet"
+
+.Die Sendung mit der Maus: Wie funktioniert das Internet?
+video::Qy9XN8vT2vw[youtube, width=480, height=360]
+http://www.wdrmaus.de/
+
+=== Unterrichtsprogramm
+
+Diese Planung basiert auf 9 Tagen mit je 6 Unterrichtseinheiten von je 45 Minuten.
+
+==== Tag 1
+
+* Einleitung zum Kurs
+* Aufbau einer Seite und die wichtigsten Elemente
+* Serverkommunikation, Adressen, Standards
+
+==== Tag 2
+
+* Einführung in CSS
+* CSS-Selektoren und Typographie
+* Listen und Tabellen
+
+==== Tag 3
+
+* Formulare
+* Seitenlayout in HTML und CSS
+* Eine Website von Anfang an
+
+==== Tag 4
+
+* CSS 3
+* Erste Prüfung
+
+==== Tag 5
+
+* JavaScript
+* Funktionen
+
+==== Tag 6
+
+* Eventhandler
+* DOM-Manipulationen
+* Objekte und JSON
+
+==== Tag 7
+
+* Cookies, WebStorage und File-API
+* Multimedia
+* Ajax
+
+==== Tag 8
+
+* Responsive Webdesign und Mobile Devices
+* Zweite Prüfung
+
+==== Tag 9
+
+* Was geht noch?
+* ECMAScript 2015
+* Reguläre Ausdrücke und Zeichencodes

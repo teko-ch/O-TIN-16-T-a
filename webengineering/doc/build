@@ -1,0 +1,9 @@
+#!/bin/bash
+mkdir -p out
+echo -e '\nRendering HTML…'
+asciidoctor -b html5 -o out/webengineering.html -r ./lib/view-result-docinfoprocessor.rb index.adoc
+cp -r images out/
+echo -e '…done\n'
+echo -e 'Rendering PDF…'
+asciidoctor -r asciidoctor-pdf -b pdf -o out/webengineering.pdf index.adoc
+echo -e '…done\n'

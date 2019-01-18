@@ -1,0 +1,9 @@
+body { // <1>
+  color: midnightblue; // <2>
+  background-color: azure; // <3>
+}
+
+span { // <1>
+  color: red; // <2>
+  background-color: yellow; // <3>
+}

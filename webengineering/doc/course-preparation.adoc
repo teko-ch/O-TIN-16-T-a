@@ -1,0 +1,56 @@
+== Kursvorbereitungen
+
+Bevor der Kurs beginnt, musst du dein Notebook vorbereiten. Im Folgenden findest Du Software, die du bitte *vor dem ersten Kurstag* auf deinem Notebook installierst. Hast du die Software am ersten Kurstag nicht auf deinem Notebook, kannst du nicht am Unterricht teilnehmen. Bei Fragen kannst du mich gerne jederzeit kontaktieren (rechtzeitig vorher, nicht erst am Kurstag).
+
+=== GIT
+
+*git* ist eine freie Software zur verteilten Versionsverwaltung, welche von Linus Torvalds ins Leben gerufen wurde und ist bekannt für hohe Geschwindigkeit, Datenintegrität und die Unterstützung von verteilten, nicht-linearen workflows.
+
+==== Installation
+
+* Herunterladen und Installieren von: +
+  https://git-scm.com/downloads
+
+==== Test
+
+----
+  $ git --version
+  git version 2.11.0
+----
+
+=== Visual Studio Code
+
+*Visual Studio Code* ist eine Mischung aus einem freien Editor und einer Entwicklungsumgebung mit Unterstützung von in _JavaScript_ geschriebenen Plugins. VS Code ist eine Desktop-Applikation, welche mittels Web-Technologien entwickelt wurde.
+
+==== Installation
+
+* Manuelle Installation: +
+  https://code.visualstudio.com/
+
+==== Test
+
+----
+$ code -v
+1.30.2
+61122f88f0bf01e2ac16bdb9e1bc4571755f5bd8
+x64
+----
+
+=== Visual Studio Code Plugins
+
+Innerhalb von *Visual Studio Code* werden die folgenden Plugins über installiert:
+
+* Auto Close Tag
+* Auto Rename Tag
+* EditorConfig for VS Code
+* Git History
+* GitHub
+* GitHub Pull Requests
+* GitLens -- Git supercharged
+* indent-rainbow
+* Live Server
+* Paste JSON as Code
+* Prettier - Code formatter
+* REST Client
+* TODO Highlight
+* XML Tools

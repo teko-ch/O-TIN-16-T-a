@@ -1,0 +1,6 @@
+[abstract]
+--
+Dieses Dokument ist das Arbeitsbuch für die beiden Kurse "Web Engineering I" und "Web Engineering II" der http://www.teko.ch/[TEKO Schweizerische Fachschule] in Olten, Schweiz.
+
+Copyright (C) 2019 https://www.fihlon.ch/[Marcus Fihlon]
+--

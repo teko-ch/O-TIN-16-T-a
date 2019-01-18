@@ -1,0 +1,305 @@
+:sourcesdir: sources/css
+
+== Einführung in CSS
+
+=== Inline Styles
+
+Beginnen wir mit einem neuen, recht speziellen Element: `<span>`. Dieses Element hat erstmal keinerlei Funktion. Es hat keine semantische Bedeutung. Die Anzeige des Dokuments im Browser ändert sich absolut nicht, wenn im HTML Quelltext `<span>` Elemente eingefügt werden. Probiere es aus!
+
+.Einfache Aufgabe
+====
+Erstelle ein neues Dokument mit einem Textabsatz. Schaue dir das Dokument im Browser an. Füge nun mitten im Text das `<span>` Element so ein, dass es ein paar Worte umfasst. Schaue dir erneut das Dokument im Browser an und versuche, Unterschiede zu finden. Du wirst erfolglos suchen…
+====
+
+[.solution]
+====
+[source,html,linenums]
+----
+include::{sourcesdir}/example-001/index.html[]
+----
+====
+
+Warum also das `<span>` Element nutzen, für was ist es gut? Wir können das `<span>` Element nutzen, um Bereich im HTML Quelltext zu markieren und dem Browser können wir dann per CSS mitteilen, wie er mit diesem Bereich bei der Anzeige verfahren soll. Dazu fügen wir dem `<span>` Element einfach das Attribut `style` hinzu und geben CSS Eingenschaften als Name-Wert-Paare an, welche mittels eines `;` separiert werden.
+
+.Einfache Aufgabe
+====
+Füge in das in der vorherigen Aufgabe erstellte Dokument dem `<span>` Element ein `style` Attribut mit dem Wert `color:red;` hinzu.
+====
+
+[.solution]
+====
+[source,html,linenums]
+----
+include::{sourcesdir}/example-002/index.html[]
+----
+====
+
+NOTE: Wenn Elemente mit dem `style` Attribut gestylt werden, spricht man von _Inline Styling_.
+
+NOTE: Aktuelle Browser unterstützen 140 Farbnamen. Wie Farben ohne Namen definiert werden, schauen wir uns nachher an.
+
+=== Stylesheets
+
+Bei der Nutzung von Inline Styles werden Strukturinformationen und Styleinformationen vermischt. Das ist _bad practice_, schlechter Stil. Besser ist es, die Styleinformationen von den Strukturinformationen zu trennen. Das sorgt für mehr Übersicht.
+
+NOTE: Die Trennung von Strukturinformationen und Styleinformationen ermöglicht es dir, jederzeit den Style anzupassen ohne die Struktur zu verändern (anders herum gilt natürlich das Gleiche).
+
+==== Styles im Kopfbereich definieren
+
+Innerhalb des Kopfbereichs kannst du das `<style>` Element einfügen und das Styling deines Dokuments darin definieren. Die Definition ist immer gleich aufgebaut: Zuerst ein CSS Selektor, der definiert, was gestylt werden soll und dann eine Auflistung von CSS Properties, die definieren, wie gestylt werden soll. Das Dokument aus der vorgherigen Aufgabe könnte dann wie folgt ausschauen:
+
+[source,html,linenums]
+----
+include::{sourcesdir}/example-003/index.html[]
+----
+
+==== Styles in separaten Dateien definieren
+
+Wenn du mehrere Seiten einheitlich Stylen möchtest ist es sehr mühsam, immer dieser die gleichen Styles in jedem Dokument aufzuführen. Als Lösung bietet sich an, die Styles in eine separate Datei auszulagern und diese in den Dokumenten einzubinden.
+
+Stylesheet-Dateien haben die Dateiendung CSS und deren Inhalt hat genau die gleiche Syntax wie das eben verwendete `<style>` Element. Externe Stylesheet-Dateien werden im Kopfbereich verlinkt. Siehe folgendes Beispiel:
+
+.CSS Datei
+[source,css,linenums]
+----
+include::{sourcesdir}/example-004/farben.css[]
+----
+
+.HTML Datei
+[source,html,linenums]
+----
+include::{sourcesdir}/example-004/index.html[]
+----
+
+Das `rel` Attribut des `<link>` Elements steht für _relationship_ und gibt die Beziehung des Verweises an. In diesem Fall wollen wir ein Stylesheet einbinden.
+
+Für das `href` Attribut des `<link>` Elements gilt das gleiche wie für das `href` Attribut des `<a>` Elements. Du kannst die Verweise auf CSS-Dateien relativ oder absolut angeben und auch Verweise auf komplett andere Domains sind möglich.
+
+NOTE: Stylesheets in externen Dateien, im Kopfbereich des Dokuments und Inline Styles können alle in Kombination verwendet werden. Gibt es konkurrierende Angaben, so gewinnt die Definition, welche sich weiter innen befindet. D. h. Styles im Kopfbereich überschreiben Styles aus externen Dateien und Inline Styles überschreiben wiederum Styles aus dem Kopfbereich.
+
+=== CSS Selektoren
+
+Bei _Inline Styles_ ist dem Browser sofort klar, was er stylen soll: Das Element, an dem der Style definiert wurde. Bei Stylesheets im Kopfbereich und in externen Dateien weiss der Browser erstmal nicht, was gestylt werden soll, da diese nicht am zu stylenden Element definiert werden. Die Lösung dazu nennt sich _CSS Selektoren_. Es gibt drei Arten von CSS Selektoren.
+
+==== Selektieren nach Element
+
+Elemente zu selektieren ist sehr einfach. Vielleicht hast du es schon bemerkt, denn genau das haben wir in den letzten beiden Beispielen gemacht. Als Selektor wird einfach der Name des Elements angeben, gefolgt von geschweiften Klammern, die die CSS Properties mit den Styleinformationen enthalten. Hier nochmals das Beispiel aus der vorhergehenden Aufgabe:
+
+.CSS Datei
+====
+[source,css,linenums]
+----
+include::{sourcesdir}/example-005/farben.css[]
+----
+<1> Angabe des CSS Selektors
+<2> Definition der Vordergrundfarbe
+<3> Definition der Hintergrundfarbe
+====
+
+==== Selektieren nach ID
+
+Könnten wir nur Elemente mit Styles versehen, dann würden die gleichen Elemente immer gleich aussehen. Oft ist das auch gewollt, aber meistens ist diese Lösung zu unflexibel. Im Kapitel über Links haben wir bereits das `id` Attribut kennen gelernt. Dieses können wir ebenfalls zum Styling verwenden und genau das eine Element mit dieser ID entsprechend stylen. Damit der Browser erkennt, dass wir nach ID selektieren, müssen wir der ID im CSS Selektor ein `#` Zeichen voranstellen. Ein kleines Beispiel:
+
+[source,html,linenums]
+----
+include::{sourcesdir}/example-006/index.html[]
+----
+
+==== Selektieren nach Klasse
+
+Beim Stylen mittels einer ID tritt ein Problem auf: IDs müssen im gesamten Dokument eindeutig sein und dürfen nicht mehrfach vorkommen. Was, wenn nun der gleiche Style mehrfach an unterschiedlichen Elementen angewendet werden soll? Dafür können wir Klassen benutzen. Klassen können wir auf allen sichtbaren Elementen definieren. So viele und so oft wir wollen. Damit der Browser erkennt, dass wir nach einer Klasse selektieren, müssen der Klasse im CSS Selektor ein `.` voranstellen. Ein kleines Beispiel:
+
+[source,html,linenums]
+----
+include::{sourcesdir}/example-007/index.html[]
+----
+
+NOTE: Wenn mehrere CSS Selektoren mit konkurrierenden Angaben auf den gleichen Abschnitt passen, so gewinnt der Selektor, welcher am Spezifischten ist. Der ID Selektor gewinnt daher fast immer.
+
+NOTE: Wenn zwei CSS Regeln die gleiche Priorität haben und die gleiche Eigenschaft definieren, dann gewinnt immer die Regel, die im Stylesheet weiter unten steht.
+
+=== Farben
+
+Farben waren bereits in den vorhergehenden Beispielen ein Thema. Dort haben wir Vorder- und Hintergrundfarben definiert. Farben können dabei auf vier verschiedene Arten angegeben werden.
+
+==== Farbnamen
+
+Die einfachste Art, Farben zu definieren, ist den Namen der Farbe anzugeben. Derzeit gibt es 140 fest definierte Farben mit Namen, die verwendet werden können. Dabei kann der Name der Farbe direkt als Wert der jeweiligen CSS Eigenschaft angegeben werden. Beispiel:
+
+[source,css,linenums]
+----
+.wichtig {
+  color: red;
+  background-color: yellow;
+}
+----
+
+Eine Liste der aktuell 140 Farbnamen ist bei http://www.w3schools.com/colors/colors_names.asp[W3Schools] verfügbar.
+
+Möchtest du eine andere Farbe nutzen, die nicht mit einem Namen definiert wurde, so musst eine der drei folgenden alternativen Farbdefinitionen nutzen mit denen sich über 16.5 Millionen Farben definieren lassen. Da sollte doch etwas schönes dabei sein…
+
+==== Hexadezimale Farbdefinition
+
+Bei der hexadezimalen Angabe von Farben werden die Werte für die Anteile von Rot, Grün und Blau, die jeweils von 0 bis 255 variieren können, in das Hexadezimalsystem umgerechnet. Dabei stehen für jeden Farbwert zwei Stellen zur Verfügung (16 x 16 = 256 mögliche Werte). Damit der Browser erkennen kann, dass die Angabe in hexadezimaler Schreibweise erfolgt, wird der Wert mit einem `#` Zeichen eingeleitet. Die ersten beiden Stellen definieren den Wert der roten Farbanteils, die mittleren beiden Stellen den Wert des grünen Farbanteils und die letzten beiden Stellen den Wert des blauen Farbanteils. Es gibt keine Trennzeichen. Beispiel:
+
+[source,css,linenums]
+----
+.wichtig {
+  color: #FF0000;
+  background-color: #FFFF00;
+}
+----
+
+NOTE: Es wird additive Farbmischung angewendet. Das bedeutet, `#000000` entspricht Schwarz, `#FFFFFF` entspricht Weiss und gelb wird mittels `#FFFF00` aus Rot und Grün gebildet.
+
+==== Definition per RGB-Angabe
+
+_RGB_ steht für Rot, Grün, Blau. Die einzelnen Werte für die Farbanteile lassen sich auch in dezimaler Schreibweise angeben. Die Syntax ist ein bisschen speziell. Die drei Angaben werden kommagetrennt in eine Klammer geschrieben, der ein `rgb` vorangestellt wird. Sozusagen wie ein _Funktionsaufruf_. Ein Beispiel:
+
+[source,css,linenums]
+----
+.wichtig {
+  color: rgb(255, 0, 0);
+  background-color: rgb(255, 255, 0);
+}
+----
+
+Anstatt den direkten Wert anzugeben ist es ebenfalls erlaubt, Prozentwerte zu definieren. Dabei entspricht 100% einem Wert von 255 für den jeweiligen Farbwert:
+
+[source,css,linenums]
+----
+.wichtig {
+  color: rgb(100%, 0%, 0%);
+  background-color: rgb(100%, 100%, 0%);
+}
+----
+
+==== Definition per HSL-Angabe
+
+_HSL_ steht für Hue (Farbton), Saturation (Sättigung) und Luminosity (Leuchtkraft). Der Farbton wird als Wert zwischen 0 und 255 angeben, Sättigung und Leuchtkraft dagegen prozentual. Wie bei RGB werden die kommagetrennten Werte von einer Klammer umfasst und mit einem `hsl` Präfix versehen Ein Beispiel:
+
+[source,css,linenums]
+----
+.wichtig {
+  color: hsl(0, 100%, 50%);
+  background-color: hsl(60, 100%, 50%);
+}
+----
+
+NOTE: Es gibt noch zwei weitere Möglichenkeiten zur Angabe von Farben, die aktuell für CSS4 vorgeschlagen wurden: HWB und CMYK. Doch CSS4 ist jetzt noch kein Thema…
+
+=== Hintergrundbilder
+
+==== Hintergrundbilder definieren
+
+Die Definition von Bildern im Hintergrund ist mit Hilfe von CSS relativ einfach. Schau dir folgendes Beispiel an:
+
+[source,css,linenums]
+----
+body {
+  background-image: url(wood.jpg);
+}
+----
+
+Die Datei mit dem Hintergrundbild wird von der Funktion `url(…)` umschlossen als Wert für die Eigenschaft `background-image` angegeben. Auch wenn die Funktion `url` heisst, kann, aber muss keine URL angegeben werden. Es kann auch ganz einfach eine Datei angegeben werden, wahlweise mit relativer oder absoluter Pfadangabe.
+
+IMPORTANT: Relative Pfadangaben beziehen sich immer auf das Stylesheet, in dem die CSS-Eigenschaft definiert wird, nicht auf das HTML-Dokument! Das macht auch Sinn, denn so kann das gleiche Stylesheet in unterschiedlichen Dokumenten angewendet werden.
+
+NOTE: Für Hintergrundbilder gelten die gleichen Einschränkungen bezüglich des Dateiformates wie bei der Einbindung eines Bildes im Inhalt. Die Formate JPG, PNG, GIF und SVG sollten von allen modernen Browsern unterstützt werden.
+
+==== Hintergrundbilder wiederholen
+
+Hintergrundbilder werden standardmässig _gekachelt_ dargestellt, d.h. sie wiederholen sich automatisch sowohl horizontal als auch vertikal. Dieses Verhalten kannst du auf Wunsch anpassen:
+
+[source,css,linenums]
+----
+body {
+  background-image: url(wood.jpg);
+  background-repeat: no-repeat;
+}
+----
+
+Mögliche Werte für die CSS-Eingenschaft `background-repeat` sind:
+
+[cols="1,3"]
+|===
+| repeat    | horizontale und vertikale Wiederholung (Standardeinstellung)
+| repeat-x  | nur horizontale Wiederholung
+| repeat-y  | nur vertikale Wiederholung
+| no-repeat | keine Wiederholung
+|===
+
+==== Hintergrundbilder positionieren
+
+Standardmässig werden Hintergrundbilder immer oben links beginnend dargestellt. Du kannst auch einen positiven oder negativen Versatz angeben. Folgendes Beispiel lässt das Hintergrundbild 10 Pixel nach rechts und 50 Pixel nach unten verschoben anzeigen:
+
+[source,css,linenums]
+----
+body {
+  background-image: url(wood.jpg);
+  background-repeat: no-repeat;
+  background-position: 10px 50px;
+}
+----
+
+Einfach, oder? An Stelle der Werte lassen sich auch die Schlüsselwerte `left`, `center`, `right` bzw. `top`, `center`, `bottom` verwenden. Um das Hintergrundbild rechts unten darzustellen, wäre demnach folgende Definition korrekt:
+
+[source,css,linenums]
+----
+body {
+  background-image: url(wood.jpg);
+  background-repeat: no-repeat;
+  background-position: right bottom;
+}
+----
+
+WARNING: Die Eigenschaft `background-position` akzeptiert auch Prozentwerte. Aber diese Prozentwerte beziehen sich nicht auf das Bild, sondern auf das Element, für welches das Hintergrundbild definiert wurde!
+
+==== Hintergrundbild fixieren
+
+Das Hintergrundbild wird standardmässig beim Scrollen mit verschoben. Wenn du das nicht möchtest, kannst du das Hintergrundbild über die CSS-Eigenschaft `background-attachment` fixieren:
+
+[source,css,linenums]
+----
+body {
+  background-image: url(wood.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+----
+
+NOTE: Die Standardeinstellung für die CSS-Eigenschaft `background-attachment` lautet `scroll`.
+
+==== Alles auf einmal
+
+Alle eben gelernten CSS-Eigenschaften für Hintergrundfarben und Hintergrundbilder lassen sich auch in einer CSS-Eigenschaft zusammengefasst definieren:
+
+[source,css,linenums]
+----
+body {
+  background: #000000 url(wood.jpg) no-repeat fixed center top;
+}
+----
+
+WARNING: Achte auf die Reihenfolge der Angaben! Wenn du nicht die korrekte Reihenfolge einhältst beginnt der Browser zu raten, was was bedeutet. Das kann dann zur fehlerhaften Anzeige des Dokuments führen.
+
+=== Pseudoklassen für Links
+
+Beim Stylen von Links wird zwischen besuchten Links und unbesuchten Links unterschieden. Zudem lassen sich Links auch anders stylen, wenn sich der Mauszeiger über ihnen befindet. Das funktioniert mit Pseudoklassen. Pseudoklassen werden nicht im HTML im `class` Attribut hinterlegt sondern automatisch vom Browser verwaltet. Im Stylesheet werden Pseudoklassen mit einem Doppelpunkt vom Element-Selektor getrennt. Ein einfaches Beispiel:
+
+[source,css,linenums]
+----
+a {
+  color: blue;
+}
+
+a:visited {
+  color: cornflowerblue;
+}
+
+a:hover {
+  color: deepskyblue;
+}
+----
+
+In diesem Beispiel wird die Schriftfarbe abhängig davon, ob ein Link vorher besucht wurde oder nicht und ob sich der Mauszeiger über dem Link befindet, angepasst. Natürlich kann man nicht nur die Farben anpassen, sondern aus allem schöpfen, was CSS zu bieten hat.

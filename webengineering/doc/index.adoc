@@ -1,0 +1,29 @@
+= Web Engineering
+Marcus Fihlon <marcus@fihlon.ch>
+v0.4, 17. Januar 2019: Einleitung aktualisiert
+:sectnums:
+:sectnumlevels: 2
+:toc: left
+:toclevels: 2
+:imagesdir: images
+:icons: font
+:source-highlighter: pygments
+:experimental:
+
+include::abstract.adoc[]
+
+<<<
+
+include::introduction.adoc[]
+
+<<<
+
+include::course-preparation.adoc[]
+
+<<<
+
+include::basics.adoc[]
+
+<<<
+
+include::css.adoc[]

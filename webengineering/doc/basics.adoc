@@ -1,0 +1,333 @@
+:sourcesdir: sources/basics
+
+== Aufbau einer Seite
+
+=== Dein erstes Dokument
+
+.Einfache Aufgabe
+====
+Erstelle eine neue Datei und tippe diesen Quelltext ab:
+
+[source,html,linenums]
+----
+include::{sourcesdir}/example-001/index.html[]
+----
+<1> *Dokumenttyp-Deklaration:* Teilt dem Browser mit, dass es sich um ein HTML5 Dokument handelt.
+<2> *Root Element:* Jedes HTML Dokument wird mit diesem Element eingeleitet
+<3> *Kommentar:* Kommentare werden bei der Anzeige ignoriert, sind jedoch im Quelltext ersichtlich!
+<4> *Kopfbereich:* Enthält Meta-Informationen über das Dokument, welche vom Browser nicht angezeigt werden.
+<5> *Zeichensatz:* Für die korrekte Darstellung des Dokuments zu verwendender Zeichensatz.
+<6> *Seitentitel:* Wird nicht im Inhaltsbereich angezeig jedoch als Fenster- bzw. Reitertitel verwendet.
+<7> *Inhaltsbereich:* Enthält den darzustellenden Inhalt der Webseite.
+<8> *Absatz:* Fliesstext wird in einem Absatz zusammengefasst.
+====
+
+WARNING: Achte sorgsam auf alle `<`, `>` und `/` Zeichen! Werden die Elemente in falscher Reihenfolge verschachtelt kann das zu einer fehlerhaften Darstellung des Dokuments führen ohne dass der Browser eine Fehlermeldung anzeigt. Solche Fehler können abhängig von der Grösse und Komplexität eines Dokuments sehr schwierig zu finden sein.
+
+NOTE: Dokumente, in denen alle Elemente korrekt verschachtelt und geschlossen sind und die keine Fehler enthalten, werden _wohlgeformt_ genannt.
+
+TIP: Einrückungen machen den Quelltext besser lesbar und haben keine Auswirkungen auf die Darstellung.
+
+TIP: Editoren mit Syntaxhervorhebung helfen durch farbige Hervorhebung von Schlüsselwerten beim Verständnis des Quelltextes.
+
+=== Überschriften
+
+HTML unterstützt sechs Ebenen von Überschriften. Die Elemente dafür heissen `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>` und `<h6>`. Der Text für die Überschrift wird von einem öffnenden und schliessenden Element der jeweiligen Ebene umgeben.
+
+.Einfache Aufgabe
+====
+Füge dem in der vorherigen Aufgabe erstellten Dokument die Überschrift der ersten Ebene "Dies ist meine erste Überschrift" hinzu.
+====
+
+[.solution]
+====
+[source,html,linenums]
+----
+include::{sourcesdir}/example-002/index.html[]
+----
+====
+
+IMPORTANT: Benutze niemals Überschriften-Elemente einer anderen Ebene (z.B. `<h2>`, `<h3>`) um die Schrift kleiner ausschauen zu lassen! Lesegeräte für Blinde (und andere Software) verlässt sich auf die korrekte Abfolge der Überschriften-Ebenen, um korrekt navigieren und die Struktur des Dokuments verstehen zu können! Später im Kurs werden wir CSS einsetzen, um die Überschrift gemäss unseren Wünschen darstellen zu lassen.
+
+=== Attribute, leere Elemente und Links
+
+==== Links
+
+Mit Links ist es möglich, Inhalte anklickbar zu machen und auf andere Stellen im gleichen Dokument, auf ein anderes Dokument oder auf eine bestimmte Stelle in einem anderen Dokument zu verweisen.
+
+NOTE: Links werden manchmal auch _Hyperlinks_ genannt. Daher stammt der Name _Hypertext_.
+
+===== Interne Links
+
+Zuerst muss ein Sprungziel definiert, d.h. die Stelle im Dokument, auf die der Link verweisen soll. Dazu wird das `a` Element (für _anchor_) verwendet und ein Name für das Sprungziel im Attribut `id` (für _identifier_) vergeben:
+
+[source,html]
+<a id="oben" />
+
+IMPORTANT: Der Wert des `id` Attributs muss im gesamten Dokument eindeutig sein! Es ist nicht erlaubt, mehrere `id` Attribute mit dem gleichen Wert im gleichen Dokument zu definieren!
+
+Der eigentliche Link, der auf das soeben erstellte Sprungziel verweist, wird ebenfalls mit dem `a` Element erstellt und das Sprungziel im `href` Attribut angegeben. Um dem Browser mitzuteilen, dass sich das Sprungziel im gleichen Dokument befindet, wird ein `#` vorangestellt:
+
+[source,html]
+<a href="#oben">Springe nach oben</a>
+
+Natürlich lässt sich auch beides vereinen, ein Link kann sowohl ein Sprungziel sein als auch gleichzeitig auf ein anderes Sprungziel verweisen:
+
+[source,html]
+----
+<a id="oben" href="#unten">Springe nach unten</a>
+…
+<a id="unten" href="#oben">Springe nach oben</a>
+----
+
+WARNING: Beachte den Unterschied in Angabe des Sprungziels zwischen den Attributen `id` und `href`! Wird der Name des Sprungziels im Attribut `id` vergeben, kommt nur der Name zwischen die Anführungszeichen. Bei der Angabe des Sprungziels im Attribut `href` kommt noch das Präfix `#` hinzu! Dieses teilt dem Browser mit, dass sich das Sprungziel im gleichen Dokument befindet.
+
+WARNING: Es gibt auch ein `link` Element, welches jedoch etwas ganz anderes macht als das `a` Element. Auf das `link` Element gehen wir in einem späteren Kapitel ein. Hauptsache, du verwechselst die beiden Elemente nicht.
+
+.Einfache Aufgabe
+====
+Erzeuge mittels http://www.lipsum.com[www.lipsum.com] zehn Absätze mit Text und füge sie dem Dokument aus der vorherigen Aufgabe hinzu. Erstelle anschliessend zwei Links, welche innerhalb des Dokuments von oben nach unten und von unten nach oben springen.
+====
+
+[.solution]
+====
+[source,html,linenums]
+----
+include::{sourcesdir}/example-003/index.html[]
+----
+====
+
+NOTE: Beachte die Adressleiste deines Browsers vor und nach dem Klicken auf einen der soeben erstellten Links. Das Sprungziel des jeweils zuletzt angeklickten internen Links wird in der Adresszeile dem Dokumentnamen hinzugefügt.
+
+===== Externe Links
+
+Verweise auf andere Dokumente lassen sich sehr einfach erstellen: Gebe den Namen des anderen Dokuments inklusive Erweiterung im `href` Attribut an und wenn sich dieses Dokument im gleichen Verzeichnis befindet, wird es bei einem Klick auf den Klink geöffnet. Befindet sich das Dokument in einem anderen Verzeichnis, muss der Pfad dorthin entweder relativ zum aktuellen Dokument oder Absolut vom Wurzelverzeichnis der Webseite angegeben werden. Beispiele:
+
+[source,html]
+----
+<a href="impressum.html">Impressum anzeigen</a>
+<a href="rechtliches/impressum.html">Impressum anzeigen</a>
+<a href="../impressum.html">Impressum anzeigen</a>
+<a href="/rechtliches/impressum.html">Impressum anzeigen</a>
+----
+
+Manchmal möchtest du vielleicht auch einen Verweis auf eine ganz andere Webseite einbauen. Auch das geht mit dem `href` Attribut des `a` Elements, in dem du die komplette URL angibst, inklusive Protokoll, beispielsweise::
+
+[source,html]
+----
+<a href="http://www.google.ch/">Google</a>
+<a href="https://www.fihlon.ch/">Marcus Fihlon</a>
+----
+
+TIP: Du kannst den https://validator.w3.org/checklink[W3C Link Checker] nutzen um zu prüfen, ob alle deine Links korrekt funktionieren. Verweist ein Link auf ein nicht existierendes Dokument, wird der Fehler `404 NOT FOUND` angezeigt. Probiere es aus!
+
+.Einfache Aufgabe
+====
+Erstelle ein neues Dokument mit einem Link, dass das in der vorherigen Aufgabe erstellte grosse Dokument öffnet und dort an das Ende der Seite springt.
+====
+
+[.solution]
+====
+[source,html,linenums]
+----
+include::{sourcesdir}/example-004/index.html[]
+----
+====
+
+===== Download Links
+
+Moderne Browser unterstützen das neue Attribut `download` des `a` Elements, welches nicht direkt das verlinkte Dokument öffnet sondern stattdessen – je nach Konfiguration des Browsers – das Dokument direkt herunterlädt oder einen Speichern-Dialog anzeigt, wobei der Wert des `download` Attributs als Dateiname verwendet bzw. vorgeschlagen wird.
+
+[source,html]
+----
+<a href="generator.php" download="Rechnung.pdf">Rechnung speichern</a>
+----
+
+NOTE: Zum Zeitpunkt als ich dieses Dokument erstellt habe ist dieses Attribut noch sehr neu und wird nur in aktuellen Versionen von Edge, Firefox und Chrome unterstützt! Das wird sich natürlich noch ändern…
+
+===== Link Targets
+
+Werden Links angeklickt, werden die verlinkten Dokumente geladen und ersetzen das aktuelle Dokument. Dies ist nicht immer erwünscht. Dank des `target` Attributs ist es möglich, das verlinkte Dokument in einem neuen Fenster (bzw. Reiter) zu öffnen:
+
+[source,html]
+----
+<a href="galerie.html" target="_blank">Zur Galerie</a>
+----
+
+Wird beim Attribut `target` der Wert `_blank` definiert, so öffnet sich das verlinkte Dokument in einem neuen Fenster. Wird der Link drei mal angeklickt, öffnen sich somit drei neue Fenster.
+
+Statt `_blank` kann auch ein "ausgedachter" Name angegeben werden. Dann schaut der Browser, ob ein Fenster mit diesem Namen existiert und ersetzt das dort angezeigte Dokument durch das verlinkte Dokument. Existiert kein Fenster mit diesem Namen, wird ein neues Fenster geöffnet.
+
+[source,html]
+----
+<a href="galerie.html" target="galerie">Zur Galerie</a>
+----
+
+WARNING: Nutze diese Funktion, den Browser ein neues Fenster öffnen zu lassen, mit Umsicht – viele Besucher einer Webseite sind verärgert, wenn verlinkte Dokumente zwangsweise in einem neuen Fenster angezeigt werden. In modernen Browsern hat der Besucher die Möglichkeit, selbst zu entscheiden, ob er ein verlinktes Dokument in einem neuen Fenster öffnen möchte oder nicht.
+
+NOTE: Mit _neues Fenster_ meine ich immer auch _neuer Reiter_. Als Web-Entwickler hat man keinen Einfluss darauf, ob der Browser ein Dokument in einem neuen Fenster oder einem neuen Reiter öffnet. Diese Entscheidung trifft der Browser bzw. der Besucher, der seinen Browser entsprechend konfiguriert.
+
+=== Bilder
+
+Natürlich lassen sich auch Bilder in Dokumenten anzeigen. Dazu wird das `<img>` Element verwendet, dessen `src` Attribut die Bilddatei referenziert. Die Referenz kann relativ, absolut und mittels einer kompletten URL angegeben werden. Zusätzlich wird im `alt` Attribut der Inhalt des Bildes beschrieben:
+
+[source,html]
+----
+<img src="kitten.jpg" alt="Kätzchen spielt im Schnee" />
+<img src="images/kitten.jpg" alt="Kätzchen spielt im Schnee" />
+<img src="/images/kitten.jpg" alt="Kätzchen spielt im Schnee" />
+<img src="http://foobar.com/kitten.jpg" alt="Kätzchen spielt im Schnee" />
+----
+
+WARNING: Das `<img>` Element ist ein so genanntes _void_ Element, d.h. es hat keinen Inhalt. Daher ist es nicht erlaubt, `<img…>…</img>` zu schreiben!
+
+NOTE: Das `alt` Attribut des `<img>` Elements sollte so kurz und gleichzeitig so beschreibend wie möglich sein. Die Beschreibung wird beispielsweise von Lesegeräten für Blinde verwendet und ist deren einzige Chance, die Bedeutung des Bildes zu erfassen.
+
+Nachdem der Browser das HTML Dokument geladen hat, werden die Bilder asynchron nachgeladen und im Dokument dargestellt. Erst wenn der Browser das Bild fertig geladen hat, kann er die Höhe und Breite des Bildes ermitteln und den nötigen Platz zur Anzeige des Bildes schaffen. Das kann dazu führen, dass andere Elemente im Dokument wie beispielsweise Text "springen", bis alle Bilder geladen und dargestellt wurde. Dieses Springen kann ganz einfach dadurch vermieden werden, dass die Dimensionen des Bildes bereits im HTML angegeben werden – dann reserviert der Browser von vornherein den zur Darstellung des Bildes nötigen Platz:
+
+[source,html]
+----
+<img src="kitten.jpg" alt="Kätzchen spielt im Schnee"
+     style="width:300px; height:200px;" />
+----
+
+WARNING: Wenn du "falsche" Werte für die Dimensionen des Bildes spezifizierst, wird das Bild vom Browser entsprechend verzerrt. Das kann zu einer schlechten Darstellung führen.
+
+NOTE: Alle aktuellen Browser unterstützen die Rasterformate GIF, JPEG und PNG sowie das Vektorformat SVG.
+
+TIP: Spiele mit den Dateiformaten und den Kompressionsraten, um das Dateiformat mit der Kompressionsrate zu finden, welche das beste Verhältnis zwischen einer kleinen Dateigrösse (zwecks schneller Übertragung) und guter Qualität des Bildes zu finden.
+
+.Einfache Aufgabe
+====
+Erstelle ein neues Dokument und binde ein Bild deiner Wahl ein. Stelle sicher, dass dein Dokument _wohlgeformt_ ist.
+====
+
+[.solution]
+====
+[source,html,linenums]
+----
+include::{sourcesdir}/example-005/index.html[]
+----
+====
+
+.Schwierige Aufgabe
+====
+Erstelle ein neues Dokument und binde ein Bild deiner Wahl ein. Bei einem Klick auf das Bild soll sich die http://www.teko.ch/[TEKO Webseite] öffnen. Um diese Aufgabe zu lösen, musst du das bisher über Links und Bilder gelernte kombiniert anwenden.
+====
+
+[.solution]
+====
+[source,html,linenums]
+----
+include::{sourcesdir}/example-006/index.html[]
+----
+====
+
+=== Kopfbereich
+
+Beim Erstellen deines ersten Dokuments hattest du bereits Kontakt mit dem `<head>` Element. Innerhalb des `<head>` Elements werden Metadaten über das aktuelle Dokument spezifiziert.
+
+==== Zeichensätze
+
+Jedes Dokument sollte den Zeichensatz spezifizieren, welche der Browser nutzen muss, um das Dokument korrekt anzuzeigen. Wird der Zeichensatz nicht angegeben, dann versucht der Browser zu raten, was mal mehr und mal weniger gut funktioniert und zur Darstellung falscher Zeichen führen kann. Heutzutage werden HTML Dokumente üblicherweise mit dem 8 Bit Unicode Zeichensatz angelegt, ausgeliefert und dargestellt. Dieser Zeichensatz unterstützt sehr viele verschiedene Zeichen unterschiedlicher Sprachen und Alphabete aus aller Welt und wird von jedem aktuellem Browser und Betriebssystem unterstützt. Im HTML Dokument werden Zeichensätze in _Kleinschreibung_ angegeben:
+
+[source,html]
+----
+<meta charset="utf-8" />
+----
+
+Es gibt hunderte verschiedener Zeichensätze. UTF-8 ist für die meisten Anwendungsfälle eine gute Wahl und sollte für alle HTML 5 Dokumente verwendet werden. Achte darauf, den verwendeten Zeichensatz korrekt anzugeben und das HTML Dokument entsprechend zu speichern.
+
+===== Einige Zeichensätze
+
+* US-ASCII
+* Windows-1251
+* Windows-1252
+* EUC-JP
+* ISO-2022-JP
+* ISO-8859-1
+* ISO-8859-15
+* UTF-8
+* UTF-16
+* …
+
+WARNING: Wenn in weiteren Meta-Angaben spezielle Zeichen wie beispielsweise Umlaute verwendet werden, dann muss der Zeichensatz im HTML Dokument vor den anderen Meta-Angaben spezifiziert werden. Auf Nummer Sicher geht, wer den Zeichensatz als erstes Element im Kopfbereich definiert.
+
+WARNING: Wenn dein Editor Am Anfang der gespeicherten HTML Datei ein BOM (https://en.wikipedia.org/wiki/Byte_order_mark[Byte Order Mark]) schreibt, muss dieses den gleichen Zeichensatz definieren wie die Spezifikation des Zeichensatzes im Kopfbereich des HTML Dokuments! Moderne HTML5-konforme Browser interpretieren das BOM dessen Information höher gewichtet wird als die Meta-Angabe im Kopfbereich. Definieren beide Orte unterschiedliche Zeichensätze für das gleiche Dokument, kann dies zu schwer zu findenden Fehlern führen.
+
+TIP: Auch wenn dein Editor ein BOM schreibt solltest du immer auch den Zeichensatz als Meta-Angabe im Kopfbereich des HTML Dokuments definieren und dieses nicht weglassen. Die Meta-Angabe kannst du beim Bearbeiten des HTML Dokuments mit deinen eigenen Augen sehen, das BOM nicht.
+
+==== Seitentitel
+
+Jedes Dokument sollte einen Titel haben, welcher im Kopfbereich definiert wird. Dieser Titel wird nicht auf der Webseite angezeigt sondern von den Browsern als Fenster- bzw. Register-Titel angezeigt und auch als Beschriftung für Favoriten genutzt. Von Suchmaschinen wird der Titel bei der Bewertung der Webseite ebenfalls sehr hoch gewichtet.
+
+[source,html]
+----
+<title>Katzenbaby Galerie</title>
+----
+
+==== Autor
+
+Optional kannst du auch den Autor bzw. Verfasser des Dokuments spezifizieren, was insbesondere für Artikel und Blogbeiträge nützlich ist:
+
+[source,html]
+----
+<meta name="author" content="Hadschi Halef Omar Ben Hadschi Abul Abbas Ibn Hadschi Dawuhd al Gossarah" />
+----
+
+==== Beschreibung
+
+Besonders interessant für die Suchmaschinenoptimierung ist die optionale Angabe einer Kurzbeschreibung für das Dokument, welche üblicherweise von Suchmaschinen auf der Suchergebnisseite direkt nach dem Seitentitel ausgegeben wird:
+
+[source,html]
+----
+<meta name="description" content="Galerie mit Fotos von ganz besonders süssen Katzenbabies. Jeden Tag mindestens ein neues Foto!" />
+----
+
+=== Sonderzeichen
+
+Mitunter möchtest du Zeichen eingeben, die nicht auf deiner Tastatur vorhanden sind. Das ist mit der Angabe so genannter _Character Entities_ möglich. Diese werden mit einem `&` eingeleitet und mit einem `;` beendet. Es gibt drei Wege, Character Entities zu spezifizieren: durch den Namen, durch dezimale Werte und durch hexadezimale Werte.
+
+==== Benannte Entities
+
+Benannte Entities lassen sich leicht merken. Leider haben nicht alle Entities einen Namen, aber immerhin die wichtigsten. Schreibe einfach den Namen zwischen das `&` und `;` Zeichen:
+
+[source,html]
+----
+&copy; <!-- © copyright symbol -->
+&amp;  <!-- & ampersand -->
+&quot; <!-- " quotation marks -->
+&lt;   <!-- < less than -->
+&gt;   <!-- > greater than -->
+&euro; <!-- € euro symbol -->
+----
+
+==== Dezimale Entities
+
+Nicht für alle Entities gibt es Namen, aber alle Zeichen (auch die benannten) lassen sich mit ihren dezimalen Werten im für das Dokument gültigen Zeichensatz anzeigen. Um dem Browser klar zu machen, dass das Entity nicht per Name sondern per dezimalem Wert angegeben wird, muss der Wert mit einem führenden `#` geschrieben werden. Das sieht dann so aus:
+
+[source,html]
+----
+&#169;  <!-- © copyright symbol -->
+&#38;   <!-- & ampersand -->
+&#34;   <!-- " quotation marks -->
+&#60;   <!-- < less than -->
+&#62;   <!-- > greater than -->
+&#8364; <!-- € euro symbol -->
+----
+
+==== Hexadezimale Entities
+
+Wenn du gegenüber der dezimalen die hexadezimale Schreibweise benutzt, kommt vor den Wert noch ein zusätzliches `x`. Einige Beispiele:
+
+[source,html]
+----
+&#xa9;  <!-- © copyright symbol -->
+&#x26;   <!-- & ampersand -->
+&#x22;   <!-- " quotation marks -->
+&#x3c;   <!-- < less than -->
+&#x3e;   <!-- > greater than -->
+&#x20ac; <!-- € euro symbol -->
+----
+
+WARNING: Wenn du dir HTML Quelltext anschaust wirst du bemerkt haben, dass die Zeichen `<>"&` beim Schreiben von HTML Quelltext eine besondere Bedeutung haben und nicht angezeigt werden. Wenn du diese Zeichen anzeigen möchtest, so musst du sie mittels der einer drei oben genannten Methoden als Character Entity schreiben, andernfalls ist dein Dokument nicht _wohlgeformt_ und es können Anzeigefehler auftreten.

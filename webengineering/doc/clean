@@ -1,0 +1,4 @@
+#!/bin/bash
+echo -e '\nCleaning output directory…'
+rm -rf out
+echo -e '…done\n'
