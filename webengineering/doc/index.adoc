@@ -1,6 +1,6 @@
 = Web Engineering
 Marcus Fihlon <marcus@fihlon.ch>
-v0.4, 17. Januar 2019: Einleitung aktualisiert
+v0.5, 28. Januar 2019: Prüfungstermine angepasst
 :sectnums:
 :sectnumlevels: 2
 :toc: left

@@ -167,23 +167,24 @@ Diese Planung basiert auf 9 Tagen mit je 6 Unterrichtseinheiten von je 45 Minute
 
 ==== Tag 3
 
+* Erste Prüfung
 * Formulare
 * Seitenlayout in HTML und CSS
-* Eine Website von Anfang an
 
 ==== Tag 4
 
+* Eine Website von Anfang an
 * CSS 3
-* Erste Prüfung
 
 ==== Tag 5
 
 * JavaScript
 * Funktionen
+* Eventhandler
 
 ==== Tag 6
 
-* Eventhandler
+* Zweite Prüfung
 * DOM-Manipulationen
 * Objekte und JSON
 
@@ -196,10 +197,10 @@ Diese Planung basiert auf 9 Tagen mit je 6 Unterrichtseinheiten von je 45 Minute
 ==== Tag 8
 
 * Responsive Webdesign und Mobile Devices
-* Zweite Prüfung
+* Was geht noch?
+* ECMAScript 2015
 
 ==== Tag 9
 
-* Was geht noch?
-* ECMAScript 2015
 * Reguläre Ausdrücke und Zeichencodes
+* Dritte Prüfung
