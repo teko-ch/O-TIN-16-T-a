@@ -1,0 +1,181 @@
+:sourcesdir: sources/lists
+
+== Listen
+
+Bei Listen wird zwischen _unsortierten_ und _sortierten_ Listen unterschieden, wobei _sortiert_ in diesem Zusammenhang nicht meint, dass die Liste in irgend einer Art und Weise (z.B. alphabetisch) sortiert wird, sondern dass die einzelnen Einträge in der Liste durchnumeriert sind. Ein Sonderfall ist der dritte Listentyp, welcher speziell für Begriffserklärungen verwendet wird.
+
+=== Unsortierte Listen
+
+Unsortierte Listen werden mit dem Element `<ul>` eingeleitet (ul -> **u**nsorted **l**ists). Einzelne Einträge in der Liste werden von einem `<li>` umschlossen (li -> **l**ist **i**tem). Standardmässig werden die einzelnen Einträge mit einem schwarzen Punkt gekennzeichnet.
+
+[source,html,linenums]
+----
+<ul>
+  <li>Kaffee</li>
+  <li>Tee</li>
+  <li>Milch</li>
+</ul>
+----
+
+Über das Attribut `list-style-type` lässt sich das Zeichen vor den einzelnen Einträgen ändern. Mögliche Werte sind:
+
+* `disc` +
+  Setzt die Markierung des Listenelements auf einen Punkt (Standard).
+* `circle` +
+  Setzt die Markierung des Listenelements auf einen Kreis.
+* `square` +
+  Setzt die Markierung des Listenelements auf ein Quadrat.
+* `none` +
+  Die Listenelemente werden nicht markiert.
+
+[source,html,linenums]
+----
+<ul style="list-style-type:disc;">
+  <li>Kaffee</li>
+  <li>Tee</li>
+  <li>Milch</li>
+</ul>
+----
+
+[source,html,linenums]
+----
+<ul style="list-style-type:circle;">
+  <li>Kaffee</li>
+  <li>Tee</li>
+  <li>Milch</li>
+</ul>
+----
+
+[source,html,linenums]
+----
+<ul style="list-style-type:square;">
+  <li>Kaffee</li>
+  <li>Tee</li>
+  <li>Milch</li>
+</ul>
+----
+
+[source,html,linenums]
+----
+<ul style="list-style-type:none;">
+  <li>Kaffee</li>
+  <li>Tee</li>
+  <li>Milch</li>
+</ul>
+----
+
+=== Sortierte Listen
+
+Sortierte Listen werden mit dem Element `<ol>` eingeleitet (ol -> **o**rdered **l**ists). Einzelne Einträge in der Liste werden, genau wie bei der unsortierten Liste, von einem `<li>` umschlossen (li -> **l**ist **i**tem). Standardmässig werden die einzelnen Einträge mit arabischen Ziffern durchnumeriert.
+
+[source,html,linenums]
+----
+<ol>
+  <li>Kaffee</li>
+  <li>Tee</li>
+  <li>Milch</li>
+</ol>
+----
+
+Über das Attribut `type` lässt sich die Art der Numerierung vor den einzelnen Einträgen ändern. Mögliche Werte sind:
+
+* `type="1"` +
+  Die Listenelemente werden mit Zahlen nummeriert (Standard).
+* `type="A"` +
+  Die Listenelemente werden mit Grossbuchstaben nummeriert.
+* `type="a"` +
+  Die Listenelemente werden mit Kleinbuchstaben nummeriert.
+* `type="I"` +
+  Die Listenelemente werden mit grossen römischen Zahlen nummeriert.
+* `type="i"` +
+  Die Listenelemente werden mit kleinen römischen Zahlen nummeriert.
+
+[source,html,linenums]
+----
+<ol type="1">
+  <li>Kaffee</li>
+  <li>Tee</li>
+  <li>Milch</li>
+</ol>
+----
+
+[source,html,linenums]
+----
+<ol type="A">
+  <li>Kaffee</li>
+  <li>Tee</li>
+  <li>Milch</li>
+</ol>
+----
+
+[source,html,linenums]
+----
+<ol type="a">
+  <li>Kaffee</li>
+  <li>Tee</li>
+  <li>Milch</li>
+</ol>
+----
+
+[source,html,linenums]
+----
+<ol type="I">
+  <li>Kaffee</li>
+  <li>Tee</li>
+  <li>Milch</li>
+</ol>
+----
+
+[source,html,linenums]
+----
+<ol type="i">
+  <li>Kaffee</li>
+  <li>Tee</li>
+  <li>Milch</li>
+</ol>
+----
+
+==== Numerierung beeinflussen
+
+Standardmässig beginnt die Numerierung immer bei 1. Wenn du mit einer anderen Nummer starten möchtest, so kannst diese über das `start` Attribut setzen:
+
+[source,html,linenums]
+----
+<ol start="50">
+  <li>Kaffee</li>
+  <li>Tee</li>
+  <li>Milch</li>
+</ol>
+----
+
+=== Begriffserklärungen
+
+Eine Begriffserklärung ist eine Liste von Begriffen mit einer Erklärung der einzelnen Begriffe. Eine solche Liste wird mit dem `<dl>` Element eingeleitet (dl -> **d**efinition **l**ist). Dann folgt der zu erklärende Begriff, welche mit dem `<dt>` Element umschlossen wird (dt -> **d**efinition **t**erm) sowie die Erklärung, mit dem `<dd>` Element umschlossen (dd -> **d**efinition **d**escription). `<dt>` und `<dd>` Elemente treten immer paarweise auf.
+
+[source,html,linenums]
+----
+<dl>
+  <dt>Kaffee</dt>
+  <dd>schwarzes Heissgetränk</dd>
+  <dt>Milch</dt>
+  <dd>weisses, kaltes Getränk</dd>
+</dl>
+----
+
+=== Verschachtelte Listen
+
+Listen lassen sich beliebig tief verschachteln. Dazu wird das Listenelement der übergeordneten Liste in die komplette untergeordnete Liste eingebettet:
+
+[source,html,linenums]
+----
+<ul>
+  <li>Kaffee</li>
+  <li>Tee
+    <ul>
+      <li>Schwarzer Tee</li>
+      <li>Grüner Tee</li>
+    </ul>
+  </li>
+  <li>Milch</li>
+</ul>
+----
