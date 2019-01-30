@@ -162,7 +162,7 @@ Diese Planung basiert auf 9 Tagen mit je 6 Unterrichtseinheiten von je 45 Minute
 ==== Tag 2
 
 * Einführung in CSS
-* CSS-Selektoren und Typographie
+* Typografie
 * Listen und Tabellen
 
 ==== Tag 3

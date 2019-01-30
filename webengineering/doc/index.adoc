@@ -1,6 +1,6 @@
 = Web Engineering
 Marcus Fihlon <marcus@fihlon.ch>
-v0.5, 28. Januar 2019: Prüfungstermine angepasst
+v0.6, 29. Januar 2019: Abschnitt über Typografie hinzugefügt
 :sectnums:
 :sectnumlevels: 2
 :toc: left
@@ -27,3 +27,7 @@ include::basics.adoc[]
 <<<
 
 include::css.adoc[]
+
+<<<
+
+include::fonts.adoc[]

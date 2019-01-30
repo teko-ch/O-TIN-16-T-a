@@ -1,0 +1,208 @@
+:sourcesdir: sources/fonts
+
+== Typografie
+
+=== Schriftfamilien
+
+In CSS gibt es zwei Arten von Schriftfamilienamen:
+
+* *generic family* +
+  Eine Gruppe von Schriftfamilien mit ähnlichem Aussehen (wie "Serif" oder "Monospace").
+* *font family* +
+  Eine bestimmte Schriftfamilie (wie "Times New Roman" oder "Arial")
+
+Die Schriftfamilie eines Textes wird mit der Eigenschaft `font-family` festgelegt.
+
+Die Eigenschaft `font-family` sollte mehrere Fontnamen als "Fallback"-System enthalten. Wenn der Browser die erste Schriftart nicht unterstützt, versucht er die nächste Schriftart, usw.
+
+Beginne mit der gewünschten Schriftart und ende mit einer generischen Familie, damit der Browser eine ähnliche Schriftart in der generischen Familie auswählen kann, wenn keine anderen Schriftarten verfügbar sind.
+
+Hinweis: Wenn der Name einer Schriftfamilie mehr als ein Wort ist, muss er in Anführungszeichen stehen: "Times New Roman".
+
+In einer kommagetrennten Liste werden mehr als eine Schriftfamilie angegeben:
+
+[source,css,linenums]
+----
+p {
+  font-family: "Times New Roman", Times, serif;
+}
+----
+
+=== Schriftstile
+
+Die Eigenschaft `font-style` wird hauptsächlich verwendet, um kursiven Text anzugeben.
+
+Diese Eigenschaft hat drei Werte:
+
+* `normal` +
+  Der Text wird normal angezeigt.
+* `italic` +
+   Der Text wird kursiv dargestellt.
+* `oblique` +
+  Der Text ist "geneigt" (`oblique` ist sehr ähnlich wie `italic`, wird aber weniger unterstützt).
+
+[source,css,linenums]
+----
+p.normal {
+  font-style: normal;
+}
+
+p.italic {
+  font-style: italic;
+}
+
+p.oblique {
+  font-style: oblique;
+}
+----
+
+=== Schriftgrössen
+
+Die Eigenschaft `font-size` legt die Grösse des Textes fest.
+
+Die Fähigkeit, die Textgrösse zu verwalten, ist wichtig für das Webdesign. Du solltest jedoch keine Schriftgrössenanpassungen vornehmen, damit Absätze wie Überschriften oder Überschriften wie Absätze aussehen.
+
+Verwende immer die richtigen HTML-Tags, wie `<h1>` - `<h6>` für Überschriften und `<p>` für Absätze.
+
+Der Wert für die Schriftgrösse kann eine absolute oder relative Grösse sein.
+
+==== Absolute Angabe
+
+* Setzt den Text auf eine bestimmte Grösse
+* Erlaubt es einem Benutzer nicht, die Textgrösse in allen Browsern zu ändern (schlecht aus Gründen der Zugänglichkeit).
+* Die absolute Grösse ist nützlich, wenn die physikalische Grösse der Ausgabe bekannt ist.
+
+Wenn du die Textgrösse mit Pixeln einstellst, hast du die volle Kontrolle über die Textgrösse:
+
+[source,css,linenums]
+----
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+p {
+  font-size: 14px;
+}
+----
+
+==== Relative Angabe
+
+* Legt die Grösse im Verhältnis zu den umgebenden Elementen fest.
+* Ermöglicht es einem Benutzer, die Textgrösse in Browsern zu ändern.
+
+Damit Benutzer die Grösse des Textes ändern können (im Browser-Menü), verwenden viele Entwickler `em` anstelle von Pixeln.
+
+Die Verwendung von `em` wird vom W3C empfohlen.
+
+`1em` ist gleich der aktuellen Schriftgrösse. Die Standard-Textgrösse in Browsern beträgt 16px. Die Standardgrösse von `1em` ist also `16px`.
+
+Die Grösse kann mit folgender Formel von Pixel zu `em` berechnet werden: _pixels/16=em_
+
+[source,css,linenums]
+----
+h1 {
+  font-size: 2.5em; /* 40px/16=2.5em */
+}
+
+h2 {
+  font-size: 1.875em; /* 30px/16=1.875em */
+}
+
+p {
+  font-size: 0.875em; /* 14px/16=0.875em */
+}
+----
+
+NOTE: Wenn du keine Schriftgrösse angibst, beträgt die Standardgrösse für normalen Text, wie Absätze, 16px (16px=1em).
+
+==== Browserübergreifende Lösung
+
+Eine Lösung, die in allen Browsern funktioniert, besteht darin, eine Standardschriftgrösse in Prozent für das `<body>` Element festzulegen:
+
+[source,css,linenums]
+----
+body {
+  font-size: 100%;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 1.875em;
+}
+
+p {
+  font-size: 0.875em;
+}
+----
+
+Unser Code zeigt in allen Browsern die gleiche Textgrösse an und ermöglicht es allen Browsern, den Text zu vergrössern oder in der Grösse anzupassen!
+
+==== Responsive Schriftgrösse
+
+Die Textgrösse kann auch mit der Einheit `vw` (viewport width, "Ansichtsfensterbreite") eingestellt werden. Auf diese Weise folgt die Textgrösse der Grösse des Browserfensters und skaliert mit dieser dynamisch mit:
+
+[source,css,linenums]
+----
+h1 {
+  font-size: 10vm;
+}
+----
+
+NOTE: Der Viewport ist die Grösse des Browserfensters. `1vw` = 1 % der Fensterbreite. Wenn das Fenster 20 cm breit ist, beträgt `1vw` entsprechend 0.2 cm.
+
+=== Schriftstärke
+
+Die Schriftstärke lässt sich über die `font-weight` Eigenschaft steuern:
+
+[source,css,linenums]
+----
+p.normal {
+  font-weight: normal;
+}
+
+p.thick {
+  font-weight: bold;
+}
+----
+
+=== Schriftartvarianten
+
+Die Eigenschaft `font-variant` gibt an, ob ein Text in Kapitälchen angezeigt werden soll oder nicht. Bei Kapitälchen werden alle Kleinbuchstaben in Grossbuchstaben umgewandelt. Die konvertierten Grossbuchstaben erscheinen jedoch in einer kleineren Schriftgrösse als die ursprünglichen Grossbuchstaben im Text.
+
+[source,css,linenums]
+----
+p.normal {
+  font-variant: normal;
+}
+
+p.small {
+  font-variant: small-caps;
+}
+----
+
+=== Eigene Schriften einbinden
+
+Mit der `@font-face` Regel müssen Webdesigner keine der "web-safe"-Schriften mehr verwenden. In der `@font-face` Regel musst Du zunächst einen Namen für die Schriftart definieren (z.B.` myFirstFont`) und dann auf die Schriftdatei zeigen.
+
+WARNING: Verwende für die URL immer Kleinbuchstaben. Grossbuchstaben können im IE zu unerwarteten Ergebnissen führen!
+
+Um die Schriftart für ein HTML-Element zu verwenden, verweise über die Eigenschaft font-family einfach auf den Namen der Schriftart (`myFirstFont`):
+
+[source,css,linenums]
+----
+@font-face {
+  font-family: myFirstFont;
+  src: url(sansation_light.woff);
+}
+
+div {
+  font-family: myFirstFont;
+}
+----
