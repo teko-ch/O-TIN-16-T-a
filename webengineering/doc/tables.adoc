@@ -1,0 +1,127 @@
+:sourcesdir: sources/tables
+
+== Tabellen
+
+=== Tabellen definieren
+
+Eine Tabelle wird immer mit dem `<table>` Element eingeleitet. Jede Zeile in der Tabelle beginnt mit dem `<tr>` Element (tr -> table row). Tabellenüberschriften werden von dem `<th>` Element umschlossen (th -> table header) und Tabellendaten von dem `<td>` Element (td -> table data).
+
+[source,html,linenums]
+----
+<table">
+  <tr>
+    <th>Vorname</th>
+    <th>Nachname</th>
+    <th>Alter</th>
+  </tr>
+  <tr>
+    <td>Hans</td>
+    <td>Mustermann</td>
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Helga</td>
+    <td>Musterfrau</td>
+    <td>94</td>
+  </tr>
+</table>
+----
+
+=== Zellen über mehrere Spalten
+
+Um Zellen über mehrere Spalten zu strecken, gibt es das `colspan` Attribut (colspan -> column span):
+
+[source,html,linenums]
+----
+<table>
+  <tr>
+    <th>Name</th>
+    <th colspan="2">Telefon</th>
+  </tr>
+  <tr>
+    <td>Rudi Rüssel</td>
+    <td>062 555 77 84</td>
+    <td>079 555 64 92</td>
+  </tr>
+</table>
+----
+
+=== Zellen über mehrere Zeilen
+
+Um Zellen über mehrere Zeilen zu strecken, gibt es das `rowspan` Attribut (rowspan ->ron span):
+
+[source,html,linenums]
+----
+<table>
+  <tr>
+    <th>Name:</th>
+    <td>Rudi Rüssel</td>
+  </tr>
+  <tr>
+    <th rowspan="2">Telefon:</th>
+    <td>079 555 64 92</td>
+  </tr>
+  <tr>
+    <td>079 555 64 92</td>
+  </tr>
+</table>
+----
+
+=== Tabellentitel
+
+Um die Tabelle mit einem Titel zu versehen, kann das `<caption>` Element verwendet werden:
+
+[source,html,linenums]
+----
+<table">
+  <caption>Monatliche Einsparungen</caption>
+  <tr>
+    <th>Monat</th>
+    <th>Einsparung</th>
+  </tr>
+  <tr>
+    <td>Januar</td>
+    <td>CHF 100.-</td>
+  </tr>
+  <tr>
+    <td>Februar</td>
+    <td>CHF 50.-</td>
+  </tr>
+</table>
+----
+
+=== Tabellenabschnitte
+
+Tabellen lassen sich grob in drei Abschnitte aufteilen: Kopfbereich (z.B. Überschriften), Inhaltsbereich und Fussbereich (z.B. Summen). Diese einzelnen Bereiche lassen sich auch im HTML entsprechend strukturieren und ermöglichen auf diese Weise, dass Browser beispielsweise nur den Inhalt scrollen und Überschriften bei grossen Tabellen immer im Blick bleiben.
+
+Dazu werden alle Zeilen aus dem Kopfbereich mit dem `<thead>` Element, alle Zeilen aus dem Inhaltsbereich mit dem `<tbody>` Element und alle Zeilen aus dem Fussbereich mit dem `<tfoot>` Element umschlossen.
+
+[source,html,linenums]
+----
+<table>
+  <thead>
+    <tr>
+      <th>Monat</th>
+      <th>Einsparung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Januar</td>
+      <td>CHF 100.-</td>
+    </tr>
+    <tr>
+      <td>Februar</td>
+      <td>CHF 80.-</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>Summe</td>
+      <td>CHF 180.-</td>
+    </tr>
+  </tfoot>
+</table>
+----
+
+WARNING: Tabellen sind einzig zur tabellarischen Darstellung von Daten gedacht, **nicht** zum Layouten von Inhalten!

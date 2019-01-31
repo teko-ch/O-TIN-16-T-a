@@ -1,6 +1,6 @@
 = Web Engineering
 Marcus Fihlon <marcus@fihlon.ch>
-v0.7, 30. Januar 2019: Abschnitt über Listen hinzugefügt
+v0.8, 31. Januar 2019: Abschnitt über Tabellen hinzugefügt
 :sectnums:
 :sectnumlevels: 2
 :toc: left
@@ -35,3 +35,7 @@ include::fonts.adoc[]
 <<<
 
 include::lists.adoc[]
+
+<<<
+
+include::tables.adoc[]
